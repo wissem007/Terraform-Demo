@@ -37,7 +37,7 @@ resource "azurerm_app_service" "AS-Terraform" {
   }
 }
 
-resource "azurerm_sql_server" "test" {
+resource "azurerm_service_plan" "test" {
   name                         = "terraform-sqlserver"
   resource_group_name          = azurerm_resource_group.RG-Terraform.name
   location                     = azurerm_resource_group.RG-Terraform.location
