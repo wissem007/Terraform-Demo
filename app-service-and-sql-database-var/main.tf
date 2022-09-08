@@ -1,18 +1,19 @@
 resource "azurerm_resource_group" "RG-Terraform" {
-  name     = "terraform-resource-group"
+  name     = "RG-Terraform-resources"
   location = "West Europe"
 }
 
-resource "azurerm_app_service_plan" "ASP-TerraForm" {
+resource "azurerm_service_plan" "ASP-TerraForm" {
   name                = "terraform-appserviceplan"
-  location            = azurerm_resource_group.RG-Terraform.location
   resource_group_name = azurerm_resource_group.RG-Terraform.name
-
-  sku {
-    tier = "Standard"
-    size = "S1"
-  }
+  location            = azurerm_resource_group.RG-Terraform.location
+  os_type             = "Linux"
+  sku_name            = "P1v2"
 }
+
+
+
+
 
 resource "azurerm_app_service" "AS-Terraform" {
   name                = "app-service-terraform"
